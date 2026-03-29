@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trader XRS Pro - Mercado Financeiro & Day Trade</title>
+    
+    <!-- Meta Tags SEO -->
+    <meta name="description" content="Trader XRS Pro - Robô FM XRS para Day Trade, Forex e B3. Sinais em tempo real, curso completo e mentoria.">
+    <meta name="keywords" content="day trade, forex, b3, robô trading, sinais trading">
+    
+    <!-- Fonts e Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="loader-chart">
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+        </div>
+        <div class="loader-text">TRADER XRS PRO</div>
+    </div>
+
+    <!-- TICKER BAR -->
+    <div class="ticker-bar">
+        <div class="ticker-content" id="ticker">
+            <div class="ticker-item">
+                <span class="symbol">IBOVESPA</span>
+                <span class="price">128.450</span>
+                <span class="change up"><i class="fas fa-caret-up"></i> +0.78%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="symbol">PETR4</span>
+                <span class="price">R$ 38.72</span>
+                <span class="change down"><i class="fas fa-caret-down"></i> -0.45%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="symbol">VALE3</span>
+                <span class="price">R$ 62.15</span>
+                <span class="change up"><i class="fas fa-caret-up"></i> +1.23%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="symbol">USD/BRL</span>
+                <span class="price">R$ 4.9720</span>
+                <span class="change down"><i class="fas fa-caret-down"></i> -0.32%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="symbol">EUR/USD</span>
+                <span class="price">$1.0842</span>
+                <span class="change down"><i class="fas fa-caret-down"></i> -0.12%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="symbol">OURO</span>
+                <span class="price">$2,345.60</span>
+                <span class="change up"><i class="fas fa-caret-up"></i> +0.95%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="symbol">S&P 500</span>
+                <span class="price">5,234.18</span>
+                <span class="change up"><i class="fas fa-caret-up"></i> +0.54%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="symbol">MGLU3</span>
+                <span class="price">R$ 12.84</span>
+                <span class="change up"><i class="fas fa-caret-up"></i> +3.12%</span>
+            </div>
+            <!-- Duplicate for seamless scroll -->
+            <div class="ticker-item">
+                <span class="symbol">IBOVESPA</span>
+                <span class="price">128.450</span>
+                <span class="change up"><i class="fas fa-caret-up"></i> +0.78%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="symbol">PETR4</span>
+                <span class="price">R$ 38.72</span>
+                <span class="change down"><i class="fas fa-caret-down"></i> -0.45%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="symbol">VALE3</span>
+                <span class="price">R$ 62.15</span>
+                <span class="change up"><i class="fas fa-caret-up"></i> +1.23%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="symbol">USD/BRL</span>
+                <span class="price">R$ 4.9720</span>
+                <span class="change down"><i class="fas fa-caret-down"></i> -0.32%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="symbol">EUR/USD</span>
+                <span class="price">$1.0842</span>
+                <span class="change down"><i class="fas fa-caret-down"></i> -0.12%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="symbol">OURO</span>
+                <span class="price">$2,345.60</span>
+                <span class="change up"><i class="fas fa-caret-up"></i> +0.95%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="symbol">S&P 500</span>
+                <span class="price">5,234.18</span>
+                <span class="change up"><i class="fas fa-caret-up"></i> +0.54%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="symbol">MGLU3</span>
+                <span class="price">R$ 12.84</span>
+                <span class="change up"><i class="fas fa-caret-up"></i> +3.12%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">FM</div>
+                <span class="logo-text">TRADER XRS Pro</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#mercado">Mercado</a></li>
+                <li><a href="#planos">Planos</a></li>
+                <li><a href="#social">Comunidade</a></li>
+                <li><a href="#contato" class="btn-cta"><i class="fab fa-telegram"></i> Entrar no Grupo</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="grid-bg"></div>
+            <div class="floating-candles">
+                <div class="candle green" style="left:5%;top:20%"><div class="wick"></div><div class="body"></div><div class="wick"></div></div>
+                <div class="candle red" style="left:15%;top:60%"><div class="wick"></div><div class="body"></div><div class="wick"></div></div>
+                <div class="candle green" style="left:25%;top:30%"><div class="wick"></div><div class="body"></div><div class="wick"></div></div>
+                <div class="candle green" style="left:45%;top:70%"><div class="wick"></div><div class="body"></div><div class="wick"></div></div>
+                <div class="candle red" style="left:60%;top:15%"><div class="wick"></div><div class="body"></div><div class="wick"></div></div>
+                <div class="candle green" style="left:75%;top:55%"><div class="wick"></div><div class="body"></div><div class="wick"></div></div>
+                <div class="candle red" style="left:85%;top:35%"><div class="wick"></div><div class="body"></div><div class="wick"></div></div>
+                <div class="candle green" style="left:92%;top:75%"><div class="wick"></div><div class="body"></div><div class="wick"></div></div>
+            </div>
+        </div>
+
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="dot"></span>
+                    Mercado ao vivo
+                </div>
+                <h1>
+                    Domine o<br>
+                    <span class="gradient-text">Mercado Financeiro</span><br>
+                    Com ROBÔ FM XRS
+                </h1>
+                <p>
+                    ROBÔ FM XRS Negociando Por Você, FOREX e B3.
+                     Suporte Completo no Nosso Grupo Do Telegram
+                    Maximinize Seus Resultados.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#planos" class="btn-primary">
+                        <i class="fas fa-rocket"></i> Começar Agora
+                    </a>
+                    <a href="#sobre" class="btn-secondary">
+                        <i class="fas fa-play-circle"></i> Assistir Vídeo
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number count-up" data-target="15847">0</div>
+                        <div class="stat-label">Pontos Atingidos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">92%</div>
+                        <div class="stat-label">Taxa de Acerto</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number count-up" data-target="3200">0</div>
+                        <div class="stat-label">Negociação/Mês</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div class="chart-pair">
+                            <div class="pair-icon">IBOV</div>
+                            <div class="pair-info">
+                                <h3>Ibovespa</h3>
+                                <span>Índice B3</span>
+                            </div>
+                        </div>
+                        <div class="chart-price">
+                            <div class="price">128.450</div>
+                            <div class="change"><i class="fas fa-caret-up"></i> +0.78%</div>
+                        </div>
+                    </div>
+                    <div class="mini-chart">
+                        <svg viewBox="0 0 400 150" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:rgba(0,212,170,0.3)"/>
+                                    <stop offset="100%" style="stop-color:rgba(0,212,170,0)"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M0,120 Q20,100 40,105 T80,90 T120,95 T160,60 T200,70 T240,45 T280,55 T320,30 T360,35 T400,15"
+                                  fill="none" stroke="var(--primary)" stroke-width="2.5"/>
+                            <path d="M0,120 Q20,100 40,105 T80,90 T120,95 T160,60 T200,70 T240,45 T280,55 T320,30 T360,35 T400,15 L400,150 L0,150 Z"
+                                  fill="url(#chartGradient)"/>
+                            <circle cx="400" cy="15" r="4" fill="var(--primary)">
+                                <animate attributeName="r" values="4;7;4" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="chart-controls">
+                        <button class="chart-btn">1H</button>
+                        <button class="chart-btn">4H</button>
+                        <button class="chart-btn active">1D</button>
+                        <button class="chart-btn">1S</button>
+                        <button class="chart-btn">1M</button>
+                    </div>
+                </div>
+
+                <div class="floating-card card-1">
+                    <div class="fc-label">Lucro Hoje</div>
+                    <div class="fc-value">
+                        <i class="fas fa-arrow-up"></i> +R$ 4.250
+                    </div>
+                </div>
+
+                <div class="floating-card card-2">
+                    <div class="fc-label">Win Rate</div>
+                    <div class="fc-value" style="color: var(--secondary);">
+                        <i class="fas fa-chart-pie"></i> 92.4%
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <div class="social-proof">
+        <div class="social-proof-container">
+            <p>Plataformas parceiras</p>
+            <div class="partners">
+                <span class="partner">XP</span>
+                <span class="partner">CLEAR</span>
+                <span class="partner">RICO</span>
+                <span class="partner">META-TRADER-5</span>
+                <span class="partner">HANTEC</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section class="services" id="servicos">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <div class="section-tag"><i class="fas fa-bolt"></i> Nossos Serviços</div>
+                <h2>Tudo que Você Precisa para<br><span class="gradient-text">Operar com Sucesso</span></h2>
+                <p>Oferecemos as melhores ferramentas e estratégias para você lucrar na Bolsa de Valores e no Forex</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon icon-1"><i class="fas fa-chart-line"></i></div>
+                    <h3>Day Trade</h3>
+                    <p>Operações intradiárias em mini contratos, ações e Forex com ROBÔ FM XRS Performance avançado, setups exclusivos FIMATHE e gestão de risco profissional.</p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon icon-2"><i class="fas fa-signal"></i></div>
+                    <h3>Sinais em Tempo Real</h3>
+                    <p>Receba sinais de entrada e saída diretamente nas Lives do YouTube com, análise detalhada de cada operação.</p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon icon-3"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Curso Completo</h3>
+                    <p>Do básico ao avançado: aprenda análise técnica, price action,FIMATHE, indicadores, gestão de risco e psicologia do trader profissional.</p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon icon-4"><i class="fas fa-chart-area"></i></div>
+                    <h3>Swing Trade</h3>
+                    <p>Operações de médio prazo  com a tecnica FIMATHE capturarando grandes movimentos.</p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon icon-5"><i class="fas fa-wallet"></i></div>
+                    <h3>Carteira de Investimentos</h3>
+                    <p>Portfólio diversificado com ações, FIIs, renda fixa e commodities, balanceado para diferentes perfis de investidor.</p>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon icon-6"><i class="fas fa-users"></i></div>
+                    <h3>Mentoria Individual</h3>
+                    <p>Acompanhamento personalizado com trader profissional, análise da sua operação e desenvolvimento de estratégias sob medida.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="sobre">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-image fade-in">
+                    <div class="about-img-container">
+                        <div class="video-wrapper">
+                            <iframe 
+                                src="https://www.youtube.com/embed/GiDQ0jVL0MY?autoplay=1&mute=1&loop=1&playlist=GiDQ0jVL0MY&controls=0&modestbranding=1&rel=0" 
+                                title="Apresentação Trader XRS Pro" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="about-experience">
+                        <div class="number">8+</div>
+                        <div class="label">Anos de<br>Experiência</div>
+                    </div>
+                </div>
+
+                <div class="about-content fade-in">
+                    <div class="section-tag"><i class="fas fa-user-tie"></i> Quem Somos</div>
+                    <h2>Trader Profissional Transformando <span class="gradient-text">Vidas</span></h2>
+                    <p>
+                        Sou um trader profissional com mais de 8 anos de experiência
+                        no mercado financeiro.Minha  missão é democratizar o acesso ao conhecimento
+                        de trading e ajudar pessoas a alcançarem a liberdade financeira operando na
+                        Bolsa de Valores e no mercado Forex usando o ROBÔ FM XRS e os Indicadores Técnicos.
+                    </p>
+
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="check"><i class="fas fa-check"></i></div>
+                            <div>
+                                <h4>Análise Técnica Avançada</h4>
+                                <p>Utilizamos as melhores ferramentas e indicadores do mercado</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="check"><i class="fas fa-check"></i></div>
+                            <div>
+                                <h4>Gestão de Risco Profissional</h4>
+                                <p>Proteja seu capital com estratégias comprovadas de gerenciamento</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="check"><i class="fas fa-check"></i></div>
+                            <div>
+                                <h4>Suporte 24/7</h4>
+                                <p>Equipe disponível para tirar dúvidas a qualquer momento</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="check"><i class="fas fa-check"></i></div>
+                            <div>
+                                <h4>Resultados Comprovados</h4>
+                                <p>Milhares de alunos lucrando consistentemente no mercado 
+                                com o nosso ROBÔ.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#planos" class="btn-primary">
+                        <i class="fas fa-arrow-right"></i> Quero Fazer Parte
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE MARKET -->
+    <section class="market" id="mercado">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <div class="section-tag"><i class="fas fa-chart-bar"></i> Mercado ao Vivo</div>
+                <h2>Acompanhe o <span class="gradient-text">Mercado em Tempo Real</span></h2>
+                <p>Principais ativos e suas cotações atualizadas</p>
+            </div>
+
+            <div class="market-table fade-in">
+                <div class="market-table-header">
+                    <span>Ativo</span>
+                    <span>Preço</span>
+                    <span>Variação 24h</span>
+                    <span>Volume</span>
+                    <span>Gráfico 7D</span>
+                </div>
+
+                <div class="market-row">
+                    <div class="market-asset">
+                        <div class="asset-icon ibov">IBOV</div>
+                        <div class="asset-name">
+                            <h4>Ibovespa</h4>
+                            <span>Índice B3</span>
+                        </div>
+                    </div>
+                    <div class="price">128.450</div>
+                    <div class="change-positive"><i class="fas fa-caret-up"></i> +0.78%</div>
+                    <div class="volume">R$ 22.4B</div>
+                    <div class="mini-sparkline">
+                        <svg viewBox="0 0 100 35" preserveAspectRatio="none">
+                            <path d="M0,25 L15,20 L30,22 L45,15 L60,18 L75,10 L100,5" fill="none" stroke="var(--green)" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="market-row">
+                    <div class="market-asset">
+                        <div class="asset-icon petr">PETR</div>
+                        <div class="asset-name">
+                            <h4>Petrobras</h4>
+                            <span>PETR4</span>
+                        </div>
+                    </div>
+                    <div class="price">R$ 38.72</div>
+                    <div class="change-negative"><i class="fas fa-caret-down"></i> -0.45%</div>
+                    <div class="volume">R$ 3.1B</div>
+                    <div class="mini-sparkline">
+                        <svg viewBox="0 0 100 35" preserveAspectRatio="none">
+                            <path d="M0,10 L20,15 L35,12 L50,20 L65,18 L80,22 L100,25" fill="none" stroke="var(--red)" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="market-row">
+                    <div class="market-asset">
+                        <div class="asset-icon vale">VALE</div>
+                        <div class="asset-name">
+                            <h4>Vale S.A.</h4>
+                            <span>VALE3</span>
+                        </div>
+                    </div>
+                    <div class="price">R$ 62.15</div>
+                    <div class="change-positive"><i class="fas fa-caret-up"></i> +1.23%</div>
+                    <div class="volume">R$ 2.8B</div>
+                    <div class="mini-sparkline">
+                        <svg viewBox="0 0 100 35" preserveAspectRatio="none">
+                            <path d="M0,20 L20,22 L35,15 L50,18 L65,12 L80,14 L100,8" fill="none" stroke="var(--green)" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="market-row">
+                    <div class="market-asset">
+                        <div class="asset-icon usd">USD</div>
+                        <div class="asset-name">
+                            <h4>Dólar</h4>
+                            <span>USD/BRL</span>
+                        </div>
+                    </div>
+                    <div class="price">R$ 4.9720</div>
+                    <div class="change-negative"><i class="fas fa-caret-down"></i> -0.32%</div>
+                    <div class="volume">$6.8B</div>
+                    <div class="mini-sparkline">
+                        <svg viewBox="0 0 100 35" preserveAspectRatio="none">
+                            <path d="M0,10 L20,18 L35,14 L50,22 L65,20 L80,25 L100,28" fill="none" stroke="var(--red)" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="market-row">
+                    <div class="market-asset">
+                        <div class="asset-icon gold">AU</div>
+                        <div class="asset-name">
+                            <h4>Ouro</h4>
+                            <span>XAU/USD</span>
+                        </div>
+                    </div>
+                    <div class="price">$2,345.60</div>
+                    <div class="change-positive"><i class="fas fa-caret-up"></i> +0.95%</div>
+                    <div class="volume">$12.1B</div>
+                    <div class="mini-sparkline">
+                        <svg viewBox="0 0 100 35" preserveAspectRatio="none">
+                            <path d="M0,28 L20,20 L35,22 L50,15 L65,10 L80,12 L100,5" fill="none" stroke="var(--green)" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="market-row">
+                    <div class="market-asset">
+                        <div class="asset-icon aapl">AAPL</div>
+                        <div class="asset-name">
+                            <h4>Apple Inc.</h4>
+                            <span>NASDAQ</span>
+                        </div>
+                    </div>
+                    <div class="price">$192.53</div>
+                    <div class="change-positive"><i class="fas fa-caret-up"></i> +0.65%</div>
+                    <div class="volume">$4.2B</div>
+                    <div class="mini-sparkline">
+                        <svg viewBox="0 0 100 35" preserveAspectRatio="none">
+                            <path d="M0,22 L15,18 L30,20 L50,12 L65,15 L80,8 L100,10" fill="none" stroke="var(--green)" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANS -->
+    <section class="plans" id="planos">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <div class="section-tag"><i class="fas fa-crown"></i> Planos</div>
+                <h2>Escolha o Plano <span class="gradient-text">Ideal para Você</span></h2>
+                <p>Invista no seu futuro financeiro com nossos planos acessíveis</p>
+            </div>
+
+            <div class="plans-grid">
+                <div class="plan-card fade-in">
+                    <div class="plan-name">Starter</div>
+                    <div class="plan-price">
+                        <span class="currency">R$</span>
+                        <span class="amount">97</span>
+                        <span class="period">/mês</span>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> Sinais de Day Trade</li>
+                        <li><i class="fas fa-check-circle"></i> Grupo do Telegram</li>
+                        <li><i class="fas fa-check-circle"></i> Análises Diárias</li>
+                        <li><i class="fas fa-check-circle"></i> Suporte via Chat</li>
+                        <li class="disabled"><i class="fas fa-times-circle"></i> Curso Completo</li>
+                        <li class="disabled"><i class="fas fa-times-circle"></i> Mentoria Individual</li>
+                        <li class="disabled"><i class="fas fa-times-circle"></i> Carteira Recomendada</li>
+                    </ul>
+                    <button class="btn-plan outline" onclick="copiarPix('starter')">
+                        <i class="fas fa-arrow-right"></i> Começar Agora
+                    </button>
+                </div>
+
+                <div class="plan-card featured fade-in">
+                    <div class="plan-name">Professional</div>
+                    <div class="plan-price">
+                        <span class="currency">R$</span>
+                        <span class="amount">197</span>
+                        <span class="period">/mês</span>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> Sinais de Day Trade</li>
+                        <li><i class="fas fa-check-circle"></i> Grupo VIP Telegram</li>
+                        <li><i class="fas fa-check-circle"></i> Análises em Tempo Real</li>
+                        <li><i class="fas fa-check-circle"></i> Acesso ao ROBÔ</li>
+                        <li><i class="fas fa-check-circle"></i> Suporte Prioritário</li>
+                        <li><i class="fas fa-check-circle"></i> Lives Exclusivas</li>
+                        <li class="disabled"><i class="fas fa-times-circle"></i> Mentoria Individual</li>
+                    </ul>
+                    <button class="btn-plan primary" onclick="copiarPix('professional')">
+                        <i class="fas fa-rocket"></i> Assinar Agora
+                    </button>
+                </div>
+
+                <div class="plan-card fade-in">
+                    <div class="plan-name">Elite</div>
+                    <div class="plan-price">
+                        <span class="currency">R$</span>
+                        <span class="amount">497</span>
+                        <span class="period">/mês</span>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> Tudo do Professional</li>
+                        <li><i class="fas fa-check-circle"></i> Mentoria Individual</li>
+                        <li><i class="fas fa-check-circle"></i> Carteira Recomendada</li>
+                        <li><i class="fas fa-check-circle"></i> Acesso ao ROBÔ</li>
+                        <li><i class="fas fa-check-circle"></i> Grupo VIP Telegram</li>
+                        <li><i class="fas fa-check-circle"></i> Suporte WhatsApp</li>
+                        <li><i class="fas fa-check-circle"></i> Setups Exclusivos</li>
+                    </ul>
+                    <button class="btn-plan outline" onclick="copiarPix('elite')">
+                        <i class="fas fa-gem"></i> Quero Ser Elite
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="depoimentos">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <div class="section-tag"><i class="fas fa-star"></i> Depoimentos</div>
+                <h2>O que Nossos <span class="gradient-text">Alunos Dizem</span></h2>
+                <p>Resultados reais de pessoas reais que transformaram suas vidas</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Em 3 meses seguindo os sinais de mini índice, usando o robô consegui uma 
+                        rentabilidade incrível.  O suporte é sensacional e a comunidade é muito
+                        engajada. Recomendo demais!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar av1">RS</div>
+                        <div class="author-info">
+                            <h4>Rafael Silva</h4>
+                            <span>Day Trader desde 2023</span>
+                            <div class="profit-badge">
+                                <i class="fas fa-arrow-up"></i> +R$ 2.450 no mês
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Saí do zero absoluto e hoje opero FOREX com confiança. O curso é
+                        didático, e o Robô é acertivo e com a mentoria fez toda diferença
+                        na minha evolução como trader."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar av2">AM</div>
+                        <div class="author-info">
+                            <h4>Ana Martins</h4>
+                            <span>Swing Trader</span>
+                            <div class="profit-badge">
+                                <i class="fas fa-arrow-up"></i> +R$ 18.900 no mês
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Negociando com o Robô mudou minha vida! Meus investimentos no FOREX
+                        rendem muito mais agora. A equipe é transparente e sempre
+                        mostra os resultados no Grupo. Top demais!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar av3">CP</div>
+                        <div class="author-info">
+                            <h4>Carlos Pereira</h4>
+                            <span>Investidor desde 2022</span>
+                            <div class="profit-badge">
+                                <i class="fas fa-arrow-up"></i> +R$ 45.200 no mês
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL MEDIA -->
+    <section class="social-section" id="social">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <div class="section-tag"><i class="fas fa-share-alt"></i> Redes Sociais</div>
+                <h2>Faça Parte da Nossa <span class="gradient-text">Comunidade</span></h2>
+                <p>Conecte-se conosco nas redes sociais e não perca nenhuma oportunidade</p>
+            </div>
+
+            <div class="social-grid">
+                <a href="https://t.me/+6vYIdXLlAfRiYzJh" target="_blank" class="social-card telegram fade-in">
+                    <div class="social-icon-large">
+                        <i class="fab fa-telegram-plane"></i>
+                    </div>
+                    <h3>Telegram</h3>
+                    <p>Sinais em tempo real, alertas de operação e análises exclusivas direto no seu celular. O canal mais rápido para lucrar!</p>
+                    <div class="members">
+                        <i class="fas fa-users"></i> 2.450+ membros
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/xrstrader?igsh=Ym5qN2o0bG40bHcw" target="_blank" class="social-card instagram fade-in">
+                    <div class="social-icon-large">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>Conteúdo educativo diário, resultados ao vivo, dicas de trading e bastidores da nossa operação. Siga e aprenda!</p>
+                    <div class="members">
+                        <i class="fas fa-heart"></i> 5.300+ seguidores
+                    </div>
+                </a>
+
+                <a href="https://youtube.com/@robofmxrs?si=TrKIzBP3pt6HGYqL" target="_blank" class="social-card youtube fade-in">
+                    <div class="social-icon-large">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>YouTube</h3>
+                    <p>Aulas completas, lives de operação ao vivo, análises de mercado semanais e tutoriais detalhados. Inscreva-se!</p>
+                    <div class="members">
+                        <i class="fas fa-play"></i> 4.800+ inscritos
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contato">
+        <div class="section-container">
+            <div class="cta-content fade-in">
+                <h2>Pronto para <span class="gradient-text">Transformar</span> sua Vida Financeira?</h2>
+                <p>
+                    Junte-se a mais de 5.000 traders que já estão lucrando com o ROBÔ e 
+                    estratégias no FOREX e B3. Comece hoje e dê o primeiro passo rumo à liberdade financeira!
+                </p>
+                <div class="cta-buttons">
+                    <a href="#planos" class="btn-primary" style="padding: 18px 40px; font-size: 1.1rem;">
+                        <i class="fas fa-rocket"></i> Começar Agora
+                    </a>
+                    <a href="https://t.me/+6vYIdXLlAfRiYzJh" target="_blank" class="btn-secondary" style="padding: 18px 40px; font-size: 1.1rem;">
+                        <i class="fab fa-telegram"></i> Grupo Gratuito
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter">
+        <div class="section-container">
+            <div class="newsletter-box fade-in">
+                <div class="newsletter-text">
+                    <h3>📬 Receba Análises Gratuitas</h3>
+                    <p>Cadastre-se e receba análises de mercado diárias no seu e-mail</p>
+                </div>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('✅ Cadastro realizado com sucesso!');">
+                    <input type="email" placeholder="Seu melhor e-mail" required>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i> Cadastrar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <div class="logo-icon">FM</div>
+                        <span class="logo-text">TRADER XRS Pro</span>
+                    </a>
+                    <p>
+                        Sua plataforma completa para investimentos e day trade na Bolsa de Valores.
+                        Transformando conhecimento em resultados desde 2016.
+                    </p>
+                    <div class="footer-socials">
+                        <a href="https://t.me/+6vYIdXLlAfRiYzJh" target="_blank" class="footer-social-link tg"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="https://www.instagram.com/xrstrader?igsh=Ym5qN2o0bG40bHcw" target="_blank" class="footer-social-link ig"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@robofmxrs?si=TrKIzBP3pt6HGYqL" target="_blank" class="footer-social-link yt"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Navegação</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Início</a></li>
+                        <li><a href="#servicos"><i class="fas fa-chevron-right"></i> Serviços</a></li>
+                        <li><a href="#sobre"><i class="fas fa-chevron-right"></i> Sobre</a></li>
+                        <li><a href="#mercado"><i class="fas fa-chevron-right"></i> Mercado</a></li>
+                        <li><a href="#planos"><i class="fas fa-chevron-right"></i> Planos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Serviços</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Day Trade</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Swing Trade</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Sinais VIP</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Curso Completo</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Mentoria</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:robsonsilvanasc@gmail.com"><i class="fas fa-envelope"></i> robsonsilvanasc@gmail.com</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> (11) 91319-8847</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> São Paulo, SP</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> Seg-Sex: 8h às 18h</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Trade XRS Pro. Todos os direitos reservados.</p>
+                <div class="footer-legal">
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Aviso de Risco</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCROLL TOP -->
+    <button class="scroll-top" id="scrollTop"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- WHATSAPP -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/5511913198847" target="_blank" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>
